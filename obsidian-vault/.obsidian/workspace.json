@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "63d4d073d68af724",
+    "type": "split",
+    "children": [
+      {
+        "id": "b101eb0ecb622e5b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6d3cdfe1fcc691fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "courses/01017-Discrete Mathematics.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01017-Discrete Mathematics"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "afc1e698b984d10a",
+    "type": "split",
+    "children": [
+      {
+        "id": "b2affcda0fb5c49f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "09d012d46fc0a3af",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "f610d9e67558945f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "d5f2f68b15512974",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b57f25319cbb0bfc",
+    "type": "split",
+    "children": [
+      {
+        "id": "3d0be22d5946cf0b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "627dc887a13ad383",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "graph",
+              "state": {},
+              "pinned": true,
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2fd24d62eaee9933",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "30f301708b6fab6b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "courses/01017-Discrete Mathematics.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 01017-Discrete Mathematics"
+            }
+          },
+          {
+            "id": "a301ea5a2fbbe93d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "courses/01017-Discrete Mathematics.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 01017-Discrete Mathematics"
+            }
+          },
+          {
+            "id": "dddabdb2ca0e4402",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "5cfdc96358e903a1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "courses/01017-Discrete Mathematics.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 01017-Discrete Mathematics"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "6d3cdfe1fcc691fd",
+  "lastOpenFiles": [
+    "2025-08-29-01017-lecture.pdf.md",
+    "courses/01017-Discrete Mathematics.md",
+    "notes/01017/lectures/pdf/2025-09-04-01017-lecture.pdf",
+    "notes/01017/lectures/pdf/2025-08-29-01017-lecture.pdf",
+    "courses/2025-08-29-01017-lecture.pdf",
+    "notes/01017/lectures/pdf",
+    "notes/02103/lectures/2025-08-26-02103-lecture.pdf",
+    "().md",
+    "notes/02103/lectures/2025-08-26-02103-lecture.typ",
+    "notes/02102/lectures/2025-08-26-02102-lecture.typ",
+    "notes/02101/lectures/2025-08-26-02101-lecture.typ",
+    "notes/01017/lectures/2025-08-29-01017-lecture.typ",
+    "notes/01005/lectures/2025-08-26-01005-lecture.typ"
+  ]
+}
