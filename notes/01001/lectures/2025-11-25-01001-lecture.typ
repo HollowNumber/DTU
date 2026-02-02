@@ -608,3 +608,6 @@ For en $3 times 3$ Jordan-blok $mat(lambda, 1, 0; 0, lambda, 1; 0, 0, lambda)$:
 - Løsning 3: $vec(1/2 t^2 e^(lambda t), t e^(lambda t), e^(lambda t))$
 
 *Mønster:* Polynomier i $t$ ganget med $e^(lambda t)$.
+
+
+Test
