@@ -1,4 +1,4 @@
-#import "@local/dtu-template:0.5.1":*
+#import "@local/dtu-template:0.6.0":*
 
 #show: dtu-note.with(
   course: "01017",
@@ -29,7 +29,7 @@ $ ZZ, ZZ_+, NN, QQ, QQ_+, RR, CC $
 
 Each set has a power set, denoted by $cal(P)$ which is the set of all subsets of $S$.
 
-== Relations
+== Relations <sec:relations>
 
 As mentioned before sets can have relations, these relations include:
 
@@ -39,7 +39,7 @@ $
 
 From this, we can define two different types of relations
 
-=== Equivalence Relations
+=== Equivalence Relations <sec:equivalence-relations>
 
 Let $R$ be an equivalence relation on $S$ if and only if $R$ satisfies:
 
@@ -86,7 +86,7 @@ If $R$ is an equivalence relation we often write $~$ instead of $R$
 
   This showcases the equivalence classes of the set $S$ under the relation $equiv 4$. Which are disjoint and cover the entire set $S$.
 
-]
+] <def:equivalence-class>
 
 #proof[
   Let $~$ be an equivalence relation on $S$, then these three statements are equivalent:
@@ -125,7 +125,7 @@ If $R$ is an equivalence relation we often write $~$ instead of $R$
   $
 ]
 
-=== Partially Ordered Sets
+=== Partially Ordered Sets <sec:posets>
 
 $(S,R)$ is a partially ordered set (poset) if $R$ satisfies
 
@@ -159,56 +159,59 @@ If every subset of $S$ has a smallest element then, $(S, R)$ is a well-ordered s
 
 #import "@preview/cetz:0.4.2"
 
-#cetz.canvas({
-  import cetz.draw: *
+#figure(
+  cetz.canvas({
+    import cetz.draw: *
 
-  let y = 0 // Same y-coordinate for all lines
+    let y = 0 // Same y-coordinate for all lines
 
-  // First number line: 1, 2, 3, ...
-  line((0, y), (5, y), stroke: black + 1pt, mark: (end: ">", fill: black))
+    // First number line: 1, 2, 3, ...
+    line((0, y), (5, y), stroke: black + 1pt, mark: (end: ">", fill: black))
 
-  // Nodes on first line
-  circle((0.5, y), radius: 0.15, fill: black)
-  content((0.5, y - 0.4), [1])
+    // Nodes on first line
+    circle((0.5, y), radius: 0.15, fill: black)
+    content((0.5, y - 0.4), [1])
 
-  circle((1.5, y), radius: 0.15, fill: black)
-  content((1.5, y - 0.4), [2])
+    circle((1.5, y), radius: 0.15, fill: black)
+    content((1.5, y - 0.4), [2])
 
-  circle((2.5, y), radius: 0.15, fill: black)
-  content((2.5, y - 0.4), [3])
+    circle((2.5, y), radius: 0.15, fill: black)
+    content((2.5, y - 0.4), [3])
 
-  content((5.3, y), [$dots.c$])
+    content((5.3, y), [$dots.c$])
 
-  // Second number line: ω, ω+1, ω+2, ...
-  line((6, y), (11, y), stroke: black + 1pt, mark: (end: ">", fill: black))
+    // Second number line: ω, ω+1, ω+2, ...
+    line((6, y), (11, y), stroke: black + 1pt, mark: (end: ">", fill: black))
 
-  // Nodes on second line
-  circle((6.5, y), radius: 0.15, fill: black)
-  content((6.5, y - 0.4), [$omega$])
+    // Nodes on second line
+    circle((6.5, y), radius: 0.15, fill: black)
+    content((6.5, y - 0.4), [$omega$])
 
-  circle((7.5, y), radius: 0.15, fill: black)
-  content((7.5, y - 0.4), [$omega + 1$])
+    circle((7.5, y), radius: 0.15, fill: black)
+    content((7.5, y - 0.4), [$omega + 1$])
 
-  circle((8.5, y), radius: 0.15, fill: black)
-  content((8.5, y - 0.4), [$omega + 2$])
+    circle((8.5, y), radius: 0.15, fill: black)
+    content((8.5, y - 0.4), [$omega + 2$])
 
-  content((11.3, y), [$dots.c$])
+    content((11.3, y), [$dots.c$])
 
-  // Third number line: 2ω, 2ω+1, ...
-  line((12, y), (17, y), stroke: black + 1pt, mark: (end: ">", fill: black))
+    // Third number line: 2ω, 2ω+1, ...
+    line((12, y), (17, y), stroke: black + 1pt, mark: (end: ">", fill: black))
 
-  // Nodes on third line
-  circle((12.5, y), radius: 0.15, fill: black)
-  content((12.5, y - 0.4), [$1w$])
+    // Nodes on third line
+    circle((12.5, y), radius: 0.15, fill: black)
+    content((12.5, y - 0.4), [$1w$])
 
-  circle((13.5, y), radius: 0.15, fill: black)
-  content((13.5, y - 0.4), [$2u + 1$])
+    circle((13.5, y), radius: 0.15, fill: black)
+    content((13.5, y - 0.4), [$2u + 1$])
 
-  circle((14.5, y), radius: 0.15, fill: black)
-  content((14.5, y - 0.4), [$dots.c$])
+    circle((14.5, y), radius: 0.15, fill: black)
+    content((14.5, y - 0.4), [$dots.c$])
 
-  content((17.3, y), [$dots.c$])
-})
+    content((17.3, y), [$dots.c$])
+  }),
+  caption: [Well-ordered set showing natural numbers, ordinals with $omega$, and extended ordinals],
+) <fig:ordinals>
 
 
 ==== Minimal element
@@ -235,7 +238,7 @@ Every finite partial ordered set has a minimal element.
   By the transitive property, if $x_i < x_(i+1)$ for all $i$, then $x_1 < x_2 < dots < x_n$ for some $n$, which implies that $x_1$ is a minimal element.
 ]
 
-== Sorting
+== Sorting <sec:sorting>
 
 For sets, there are different ways of ordering sets.
 

@@ -1,4 +1,4 @@
-#import "@local/dtu-template:0.4.3":*
+#import "@local/dtu-template:0.6.0":*
 
 #show: dtu-note.with(
   course: "01001",
@@ -43,7 +43,7 @@ $ kaldes $z$'s polære koordinater
 Den polære form er bygget op af intervallet fra den Komplekse eksponentielle funktion
 
 
-#definition("4.4.1")[
+#definition(title: "4.4.1")[
   givet $z = a + b i$ givet på rektangulær form, da defineres
 
   $
@@ -126,7 +126,7 @@ Den polære form er bygget op af intervallet fra den Komplekse eksponentielle fu
 
 Vi kan nu vende tilbage til den polære form af et komplekst tal.
 
-#definition("Polæreform")[
+#definition(title: "Polæreform")[
   givet $z in CC$, så gælder
   $
     z = abs(z) dot e^(i dot arg(z))
@@ -242,7 +242,7 @@ $
 
 = Polynomier
 
-#definition("5.1.1")[
+#definition(title: "5.1.1")[
   Et udtryk på formen
 
   $
@@ -280,7 +280,7 @@ $
 
 Så polynomiet har grad $4$ og førende koefficient $6 + 2i$
 
-#definition("5.1.2")[
+#definition(title: "5.1.2")[
   $p(z)$ er givet komplekst polynomium. Hvis $lambda in CC$ opfylder
 
   $
@@ -332,7 +332,7 @@ $
 
 Men hvad hvis diskriminanten er negativ?
 
-#definition("Diskriminant")[
+#definition(title: "Diskriminant")[
 
 
   $
@@ -363,61 +363,64 @@ Men hvad hvis diskriminanten er negativ?
 
 #import "@preview/cetz:0.4.2": canvas, draw
 
-#canvas(length: 1.2cm, {
-  import draw: *
+#figure(
+  canvas(length: 1.2cm, {
+    import draw: *
 
-  let real_part = 3
-  let imag_part = 5
+    let real_part = 3
+    let imag_part = 5
 
-  // Set up coordinate system with focus on first quadrant
-  set-style(stroke: gray + 0.4pt)
-
-
-  // Main axes
-  set-style(stroke: black + 1.5pt)
-  line((0, 0), (real_part + 1, 0))
-  line((0, 0), (0, imag_part + 1))
-
-  // Axis labels
+    // Set up coordinate system with focus on first quadrant
+    set-style(stroke: gray + 0.4pt)
 
 
-  // Origin
-  content((-0.2, -0.2), text(size: 10pt, "0"), anchor: "north-east")
-  arc((rel: (1, 0.2)), start: 0deg, stop: 45deg, radius: 1, stroke: black + 0.5pt, mark: (end: ">>"), name: "angle" )
-  //set-origin("angle.center")
-  content((rel: (0.25, -0.25)), $arg(z)$, anchor: "west")
+    // Main axes
+    set-style(stroke: black + 1.5pt)
+    line((0, 0), (real_part + 1, 0))
+    line((0, 0), (0, imag_part + 1))
+
+    // Axis labels
 
 
-  // The complex number point
-  circle((real_part, imag_part), radius: 0.05, fill: red, stroke: red + 1.5pt, name: "z-point")
-  content((real_part, imag_part+0.2), text(size: 10pt, fill: white, $z$), anchor: "center")
+    // Origin
+    content((-0.2, -0.2), text(size: 10pt, "0"), anchor: "north-east")
+    arc((rel: (1, 0.2)), start: 0deg, stop: 45deg, radius: 1, stroke: black + 0.5pt, mark: (end: ">>"), name: "angle" )
+    //set-origin("angle.center")
+    content((rel: (0.25, -0.25)), $arg(z)$, anchor: "west")
 
 
-  // 1. Real part (horizontal leg)
-  //line((0, 0), (real_part, 0), name: "real-leg")
-  on-layer(-1, {
-    content((real_part/2, -0.5), text(size: 11pt, fill: blue, $Re(z)$), anchor: "north")
-
-    // 2. Imaginary part (vertical leg)
-    line((real_part, 0), (real_part, imag_part), name: "imag-leg", stroke: (dash: "dashed"))
-    content((real_part + 0.7, imag_part/2), text(size: 11pt, fill: green, $Im(z)$), anchor: "west")
-
-    // 3. Complex number (hypotenuse)
-    line((0, 0), (real_part, imag_part), name: "hypotenuse", anchor: "north", stroke: (dash: "dashed"))
-
-    content("hypotenuse.mid", text(size: 10pt, fill: white, $|z|$), anchor: "south")
-  })
-
-  // Magnitude calculation
-
-  // Right angle indicator (larger)
+    // The complex number point
+    circle((real_part, imag_part), radius: 0.05, fill: red, stroke: red + 1.5pt, name: "z-point")
+    content((real_part, imag_part+0.2), text(size: 10pt, fill: white, $z$), anchor: "center")
 
 
-  // Angle theta
+    // 1. Real part (horizontal leg)
+    //line((0, 0), (real_part, 0), name: "real-leg")
+    on-layer(-1, {
+      content((real_part/2, -0.5), text(size: 11pt, fill: blue, $Re(z)$), anchor: "north")
 
-  // Triangle area shading (optional - makes it more visual)
-  //line((0, 0), (real_part, 0), (real_part, imag_part), close: true)
+      // 2. Imaginary part (vertical leg)
+      line((real_part, 0), (real_part, imag_part), name: "imag-leg", stroke: (dash: "dashed"))
+      content((real_part + 0.7, imag_part/2), text(size: 11pt, fill: green, $Im(z)$), anchor: "west")
 
-  // Labels for triangle sides
+      // 3. Complex number (hypotenuse)
+      line((0, 0), (real_part, imag_part), name: "hypotenuse", anchor: "north", stroke: (dash: "dashed"))
 
-})
+      content("hypotenuse.mid", text(size: 10pt, fill: white, $|z|$), anchor: "south")
+    })
+
+    // Magnitude calculation
+
+    // Right angle indicator (larger)
+
+
+    // Angle theta
+
+    // Triangle area shading (optional - makes it more visual)
+    //line((0, 0), (real_part, 0), (real_part, imag_part), close: true)
+
+    // Labels for triangle sides
+
+  }),
+  caption: [Complex number $z$ in the complex plane showing real part, imaginary part, magnitude, and argument]
+) <fig:complex-plane>

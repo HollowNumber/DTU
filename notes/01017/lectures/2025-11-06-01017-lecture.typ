@@ -1,4 +1,4 @@
-#import "@local/dtu-template:0.5.0":*
+#import "@local/dtu-template:0.6.0":*
 
 #show: dtu-note.with(
   course: "01017",
@@ -91,7 +91,7 @@ Binomials will always be integers, becaues by combinatrics the number of ways so
     }
   }),
   caption: "Pascal's Triangle in binomial notation"
-)
+) <fig:pascals-triangle>
 
 
 $

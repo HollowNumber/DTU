@@ -1,4 +1,4 @@
-#import "@local/dtu-template:0.5.1":*
+#import "@local/dtu-template:0.6.0":*
 #import "@preview/cetz:0.4.2"
 
 #show: dtu-note.with(
@@ -10,22 +10,22 @@
   semester: "2025 Fall"
 )
 
-= Graphs - Section 10.1 - 10.5
+= Graphs - Section 10.1 - 10.5 <sec:graphs>
 
-== Introduction to Graph Theory
+== Introduction to Graph Theory <sec:graph-intro>
 
 A *graph* $G = (V, E)$ consists of:
 - A set $V$ of *vertices* (or nodes)
 - A set $E$ of *edges* connecting pairs of vertices
 
-== Königsberg Bridge Problem
+== Königsberg Bridge Problem <sec:konigsberg>
 
 Given a map of the city of Königsberg, which consists of four landmasses connected by seven bridges, determine whether it is possible to walk through the city in such a way that each bridge is crossed exactly once.
 
 The map of the city of Königsberg can be drawn as a graph, where each landmass is represented by a vertex and each bridge is represented by an edge. The problem can be solved using graph theory, specifically by analyzing the degrees of the vertices.
 
-#align(center)[
-  #cetz.canvas({
+#figure(
+  cetz.canvas({
     import cetz.draw: *
 
     // Define the four land masses
@@ -75,10 +75,9 @@ The map of the city of Königsberg can be drawn as a graph, where each landmass 
     content((0, 3.2), text(size: 9pt)[$deg = 3$])
     content((0, -3.2), text(size: 9pt)[$deg = 3$])
     content((4.2, 0), text(size: 9pt)[$deg = 3$], anchor: "west")
-  })
-]
-
-*Figure 1:* Graph representation of the Königsberg bridges. The island $A$ has degree 5, while shores $B$, $C$, and $D$ each have degree 3.
+  }),
+  caption: [Graph representation of the Königsberg bridges. The island $A$ has degree 5, while shores $B$, $C$, and $D$ each have degree 3.],
+) <fig:konigsberg>
 
 === Edge and Vertex Terminology
 
@@ -94,8 +93,8 @@ Given vertices $a$ and $b$, we can describe their connections as follows:
 
   *Note:* Loops count twice toward the degree.
 
-  #align(center)[
-    #cetz.canvas({
+  #figure(
+    cetz.canvas({
       import cetz.draw: *
 
       // Central vertex
@@ -120,11 +119,12 @@ Given vertices $a$ and $b$, we can describe their connections as follows:
       // Degree label
       content((0, -2), [$deg(v) = 4 + 2 = 6$])
       content((0, -2.5), text(size: 9pt)[(4 edges + 1 loop counting twice)])
-    })
-  ]
-]
+    }),
+    caption: [Vertex $v$ with degree 6: four edges plus one loop (counted twice)],
+  ) <fig:vertex-degree>
+] <def:vertex-degree>
 
-== Euler Walks and Circuits
+== Euler Walks and Circuits <sec:euler-walks>
 
 Euler proposed a method of solving the bridge problem using what is now known as an "Euler walk" or "Euler circuit":
 
@@ -136,10 +136,8 @@ Euler proposed a method of solving the bridge problem using what is now known as
   2. Goes through every edge exactly once
   3. Returns to $s$
 
-  #align(
-    center,
-  )[
-    #cetz.canvas(
+  #figure(
+    cetz.canvas(
       {
         import cetz.draw: *
 
@@ -167,29 +165,30 @@ Euler proposed a method of solving the bridge problem using what is now known as
         // Arrow showing direction
         content((0, -2.2), [Euler circuit: $s -> v_1 -> v_2 -> v_3 -> v_4 -> s$])
       },
-    )
-  ]
-]
+    ),
+    caption: [Pentagon graph showing an Euler circuit that visits every edge exactly once],
+  ) <fig:euler-circuit>
+] <def:euler-circuit>
 
 #definition(title: "Euler Path (Open Euler Walk)")[
   An *Euler path* (or *open Euler walk*) is a walk that:
   - Starts at a vertex $s$
   - Traverses every edge exactly once
   - Ends at a vertex $t$ where $t != s$
-]
+] <def:euler-path>
 
 #theorem(title: "Existence of Euler Circuits")[
   A connected graph $G$ has an Euler circuit if and only if every vertex has even degree.
-]
+] <thm:euler-circuit-existence>
 
 #theorem(title: "Existence of Euler Paths")[
   A connected graph $G$ has an Euler path if and only if it has exactly zero or two vertices of odd degree.
 
   - If there are zero vertices of odd degree, the path is actually a circuit
   - If there are exactly two vertices of odd degree, the path must start at one and end at the other
-]
+] <thm:euler-path-existence>
 
-== Hierholzer's Algorithm
+== Hierholzer's Algorithm <sec:hierholzer>
 
 This algorithm constructs an Euler circuit when one exists.
 
@@ -217,19 +216,19 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
 *Algorithm correctness:* This algorithm terminates because each iteration uses at least one edge, and there are finitely many edges. When it terminates, all edges have been used exactly once, giving us an Euler circuit.
 ]
 
-== Graph Connectivity
+== Graph Connectivity <sec:connectivity>
 
 #definition(title: "Connected Graph")[
   A graph $G$ is *connected* if there is a path between every pair of vertices.
 
   Conversely, a graph $G$ is *disconnected* if there exists at least one pair of vertices with no path between them.
-]
+] <def:connected>
 
 #definition(title: "Connected Component")[
   A *connected component* of a graph is a maximal connected subgraph. That is, a connected subgraph that is not contained in any larger connected subgraph.
-]
+] <def:connected-component>
 
-== Fundamental Graph Theory Results
+== Fundamental Graph Theory Results <sec:fundamental-results>
 
 #lemma(name: "Handshake Lemma")[
   In any graph, the sum of the degrees of all vertices is equal to twice the number of edges.
@@ -239,21 +238,21 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
   $
 
   *Proof:* Each edge contributes exactly 2 to the total degree count (one for each endpoint).
-]
+] <lem:handshake>
 
 #corollary(name: "Handshake Lemma")[
   In any graph, the number of vertices of odd degree is even.
 
   *Proof:* Since the sum of all degrees is even (it equals $2abs(E(G))$), if we separate vertices into those with even degree and those with odd degree, the sum of the odd degrees must be even. This is only possible if there are an even number of odd-degree vertices.
-]
+] <cor:handshake>
 
-== Paths and Cycles
+== Paths and Cycles <sec:paths-cycles>
 
 #definition(title: "Path")[
   A *path* is a sequence of vertices $v_1, v_2, dots, v_n$ where each consecutive pair is connected by an edge, and no edge is repeated.
 
-  #align(center)[
-    #cetz.canvas({
+  #figure(
+    cetz.canvas({
       import cetz.draw: *
 
       // P_5: 5 vertices in a line
@@ -268,19 +267,18 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
       }
 
       content((3, -1.3), [$P_5$])
-    })
-  ]
+    }),
+    caption: [Path $P_5$ with 5 vertices and 4 edges],
+  ) <fig:path>
 
   The *length* of a path is the number of edges in it.
-]
+] <def:path>
 
 #definition(title: "Cycle")[
   A *cycle* is a path that starts and ends at the same vertex, with at least one edge, and no other vertex is repeated.
 
-  #align(
-    center,
-  )[
-    #cetz.canvas(
+  #figure(
+    cetz.canvas(
       {
         import cetz.draw: *
 
@@ -310,21 +308,22 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
         draw-cycle(6.5, 5, r: 1)
         draw-cycle(10.5, 6, r: 1.1)
       },
-    )
-  ]
-]
+    ),
+    caption: [Cycle graphs $C_3$, $C_4$, $C_5$, and $C_6$],
+  ) <fig:cycles>
+] <def:cycle>
 
 #definition(title: "Simple Path")[
   A *simple path* is a path in which no vertex is repeated (except possibly the first and last in the case of a cycle).
-]
+] <def:simple-path>
 
-== Special Graph Types
+== Special Graph Types <sec:special-graphs>
 
 #definition(title: "Complete Graph")[
   A *complete graph* $K_n$ is a simple graph with $n$ vertices in which every pair of distinct vertices is connected by an edge.
 
-  #align(center)[
-    #cetz.canvas({
+  #figure(
+    cetz.canvas({
       import cetz.draw: *
 
       // K_3 (triangle)
@@ -400,21 +399,22 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
       }
 
       content((cx4, -1.8), [$K_6$])
-    })
-  ]
+    }),
+    caption: [Complete graphs $K_3$, $K_4$, $K_5$, and $K_6$],
+  ) <fig:complete-graphs>
 
   The number of edges in $K_n$ is $binom(n, 2) = (n(n-1))/2$.
-]
+] <def:complete-graph>
 
 #definition(title: "Bipartite Graph")[
   A graph $G = (V, E)$ is *bipartite* if the vertex set $V$ can be partitioned into two disjoint sets $V_1$ and $V_2$ such that every edge connects a vertex in $V_1$ to a vertex in $V_2$.
-]
+] <def:bipartite>
 
 #definition(title: "Complete Bipartite Graph")[
   A *complete bipartite graph* $K_(m,n)$ is a bipartite graph where every vertex in one partition is connected to every vertex in the other partition.
 
-  #align(center)[
-    #cetz.canvas({
+  #figure(
+    cetz.canvas({
       import cetz.draw: *
 
       // K_{2,3} - Complete bipartite graph
@@ -474,15 +474,16 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
       }
 
       content((cx2 + 2, -3), [$K_(3,3)$])
-    })
-  ]
-]
+    }),
+    caption: [Complete bipartite graphs $K_(2,3)$ and $K_(3,3)$],
+  ) <fig:bipartite>
+] <def:complete-bipartite>
 
 #definition(title: "Wheel Graph")[
   A *wheel graph* $W_n$ is formed by connecting a single central vertex (the hub) to all vertices of a cycle $C_n$.
 
-  #align(center)[
-    #cetz.canvas({
+  #figure(
+    cetz.canvas({
       import cetz.draw: *
 
       // W_3 (triangle with center)
@@ -565,8 +566,9 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
       }
 
       content((cx3, -2.1), [$W_6$])
-    })
-  ]
+    }),
+    caption: [Wheel graphs $W_3$, $W_5$, and $W_6$],
+  ) <fig:wheel-graphs>
 
 
   - $W_n$ has $n + 1$ vertices (n vertices in the cycle plus 1 hub)
@@ -576,11 +578,11 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
 
 
 
-]
+] <def:wheel-graph>
 
 
 
-== The n-Cube (Hypercube)
+== The n-Cube (Hypercube) <sec:hypercube>
 
 #definition(title: "n-Cube Graph")[
   The *n-cube* (or *hypercube*) $Q_n$ is defined as follows:
@@ -596,8 +598,8 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
   $
 
 
-  #align(center)[
-    #cetz.canvas({
+  #figure(
+    cetz.canvas({
       import cetz.draw: *
 
       // Q_1 (just an edge)
@@ -673,9 +675,10 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
       content((cx3 + d / 2 + 0.4, d / 2), text(size: 7pt)[111])
 
       content((cx3, -1.5), [$Q_3$])
-    })
-  ]
-]
+    }),
+    caption: [n-Cube graphs: $Q_1$ (edge), $Q_2$ (square), and $Q_3$ (cube)],
+  ) <fig:hypercubes>
+] <def:hypercube>
 
 *Properties of $Q_n$:*
 - Number of vertices: $2^n$
@@ -688,13 +691,13 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
 - $Q_2$: A square with vertices $(0,0), (0,1), (1,0), (1,1)$
 - $Q_3$: A cube with 8 vertices representing all binary strings of length 3
 
-== Trees
+== Trees <sec:trees>
 
 #definition(title: "Tree")[
   A *tree* is a connected graph with no cycles.
 
   A *forest* is a graph with no cycles (possibly disconnected).
-]
+] <def:tree>
 
 #theorem(title: "Properties of Trees")[
   The following are equivalent for a graph $T$ with $n$ vertices:
@@ -702,7 +705,7 @@ Since we assume the original graph is connected, repeating Step 2 will eventuall
   2. $T$ is connected and has $n-1$ edges
   3. $T$ is acyclic and has $n-1$ edges
   4. There is exactly one path between any two vertices in $T$
-]
+] <thm:tree-properties>
 
 === Family Trees
 
@@ -711,8 +714,8 @@ Family trees are a practical application of tree structures in graph theory, use
 #definition(title: "Family Tree")[
   A *family tree* is a tree-like structure (often a directed acyclic graph) that represents family relationships. In its simplest form as an undirected tree:
 
-  #align(center)[
-    #cetz.canvas({
+  #figure(
+    cetz.canvas({
       import cetz.draw: *
 
       // A simple family tree (women only, matrilineal)
@@ -749,8 +752,9 @@ Family trees are a practical application of tree structures in graph theory, use
       // Labels
       content((8, 4), text(size: 9pt)[Root (ancestor)], anchor: "west")
       content((8, 1), text(size: 9pt)[Leaves (descendants)], anchor: "west")
-    })
-  ]
+    }),
+    caption: [Family tree showing matrilineal relationships across three generations],
+  ) <fig:family-tree>
 
   - Each vertex represents a person
   - Edges represent parent-child relationships
@@ -761,21 +765,21 @@ Family trees are a practical application of tree structures in graph theory, use
   - No cycles (you cannot be your own ancestor through any path)
   - Connected structure showing lineage
   - Can be represented as a rooted tree with the oldest ancestor as root
-]
+] <def:family-tree>
 
-== Hamilton Paths and Circuits
+== Hamilton Paths and Circuits <sec:hamilton>
 
 #definition(title: "Hamilton Path")[
   A *Hamilton path* in a graph is a path that visits every vertex exactly once.
-]
+] <def:hamilton-path>
 
 #definition(title: "Hamilton Circuit")[
   A *Hamilton circuit* in a graph is a cycle that visits every vertex exactly once (except for returning to the start).
-]
+] <def:hamilton-circuit>
 
 *Note:* Unlike Euler circuits, there is no simple condition to determine whether a graph has a Hamilton circuit. This is a much harder problem (NP-complete).
 
-== Graph Representations
+== Graph Representations <sec:graph-representations>
 
 Graphs can be represented in multiple ways:
 
@@ -785,7 +789,7 @@ Graphs can be represented in multiple ways:
 
 3. *Edge List:* Simply list all edges as pairs of vertices
 
-== The Marriage Problem (Hall's Marriage Theorem)
+== The Marriage Problem (Hall's Marriage Theorem) <sec:marriage-problem>
 
 The marriage problem is a classic problem in graph theory that asks: Given a set of $n$ women and $n$ men, where each woman knows some subset of the men, under what conditions can we arrange $n$ marriages such that each woman marries a man she knows?
 
@@ -795,11 +799,11 @@ This problem can be modeled as a *matching problem* in a bipartite graph.
   A *matching* in a graph is a set of edges with no common vertices. That is, no two edges in the matching share an endpoint.
 
   A *perfect matching* is a matching that covers all vertices of the graph.
-]
+] <def:matching>
 
 #definition(title: "Complete Matching")[
   In a bipartite graph $G = (X union Y, E)$, a *complete matching from $X$ to $Y$* is a matching that covers every vertex in $X$.
-]
+] <def:complete-matching>
 
 #theorem(title: "Hall's Marriage Theorem")[
   Let $G = (X union Y, E)$ be a bipartite graph. There exists a complete matching from $X$ to $Y$ if and only if for every subset $S subset.eq X$, the neighborhood $N(S)$ satisfies:
@@ -811,7 +815,7 @@ This problem can be modeled as a *matching problem* in a bipartite graph.
   where $N(S)$ is the set of all vertices in $Y$ that are adjacent to at least one vertex in $S$.
 
   This condition is known as *Hall's condition* or the *marriage condition*.
-]
+] <thm:hall-marriage>
 
 *Interpretation:* For any group of women, the number of men they collectively know must be at least as large as the number of women in that group.
 
@@ -872,8 +876,8 @@ This problem can be modeled as a *matching problem* in a bipartite graph.
     content((5, -0.5), text(size: 8pt, [{$w_1, w_2$} know only {$m_1$}]))
     content((5, -0.8), text(size: 8pt, [Violates Hall's condition: $|S| = 2 > 1 = |N(S)|$]))
   }),
-  caption: [Examples of bipartite graphs with and without perfect matchings]
-)
+  caption: [Bipartite graphs illustrating Hall's Marriage Theorem: left satisfies Hall's condition with a perfect matching, right violates it]
+) <fig:marriage-problem>
 
 *Example Applications:*
 - Job assignments (workers to jobs)

@@ -1,4 +1,4 @@
-#import "@local/dtu-template:0.4.2":*
+#import "@local/dtu-template:0.6.0":*
 
 #import "@preview/cetz:0.4.2": canvas, draw
 #import "@preview/cetz-venn:0.1.4": venn2, venn3
@@ -142,9 +142,9 @@
 
 == Cardinality
 
-#definition("Cardinality")[
+#definition(title: "Cardinality")[
   Let $A$ be a set. The _cardinality_ of the set $A$, denoted by $|A|$, is the number of elements in $A$.
-]
+] <def:cardinality>
 
 #example[
   Let $A = {1, 3, 5}$ and $B = {1, 2, 3}$. Then
@@ -167,9 +167,9 @@ $
 
 == Unions
 
-#definition("Union")[
+#definition(title: "Union")[
   Let $A$ and $B$ be sets. The _union_ of the sets $A$ and $B$, denoted by $A union B$, is the set that contains those elements that are either in $A$ or in $B$, or in both.
-]
+] <def:union>
 
 An element $x$ to the union of the sets $A$ and $B$ if and only if $x$ belongs to $A$ or $x$ belongs to $B$
 
@@ -184,13 +184,13 @@ $
 
 The union of Set $A$ and $B$ can be shown as a venn diagram.
 
-#venn2-union("Set A", "Set B", caption: $A union B$)
+#venn2-union("Set A", "Set B", caption: $A union B$) <fig:set-union>
 
 == Intersections
 
-#definition("Intersection")[
+#definition(title: "Intersection")[
   Let $A$ and $B$ be sets. The _intersection_ of the sets $A$ and $B$, denoted by $A inter B$, is the set that contains those elements that are in both $A$ and $B$.
-]
+] <def:intersection>
 
 An element $x$ belongs to the intersection of the sets $A$ and $B$ if and only if $x$ belongs to $A$ and $x$ belongs to $B$
 
@@ -205,14 +205,14 @@ $
 
 Likewise the intersection of Set $A$ and $B$ can be shown as a venn diagram.
 
-#venn2-intersection("Set A", "Set B", caption: $A inter B$)
+#venn2-intersection("Set A", "Set B", caption: $A inter B$) <fig:set-intersection>
 
 
 == Disjoint
 
-#definition("Disjoint")[
+#definition(title: "Disjoint")[
   Two sets are called _disjoint_ if their intersection is the empty set $emptyset$
-]
+] <def:disjoint>
 
 #example[
   Let $A = {1, 3, 5, 7, 9}$ and $B = {2, 4, 6, 8, 10}$.
@@ -234,11 +234,9 @@ $
 
 == Difference
 
-#definition("Difference")[
+#definition(title: "Difference")[
   Let $A$ and $B$ be sets. The _difference_ of $A$ and $B$, denoted by $A - B$, is the set containing those elements that are in $A$ but not in $B$. The difference of $A$ and $B$ is also called the _complement of $B$ with respect to $A$_.
-
-
-]
+] <def:set-difference>
 
 #note-box[
   The difference of sets $A$ and $B$ is sometimes denoted by $A backslash B$.
@@ -250,7 +248,7 @@ $
   A - B = {x | x in A or x in.not B}
 $
 
-#venn2-highlight("Set A", "Set B", caption: [The difference of $A$ and $B$ is $A - B$])
+#venn2-highlight("Set A", "Set B", caption: [The difference of $A$ and $B$ is $A - B$]) <fig:set-difference>
 
 #example[
   Let $A = {1 ,3 ,5}$ and $B = {1, 2, 3}$, the difference of $A - B$ would be
@@ -294,7 +292,7 @@ Once the universal set $U$ has been specified, the *complement* of a set can be 
 
 == Complement
 
-#definition("Complement")[
+#definition(title: "Complement")[
   Let $U$ be the universal set. The _complement_ of the set $A$, denoted by $overline(A)$, is the complement of $A$ with respect to $U$.
   Therefore, the complement of the set $A$ is $U - A$
 ]
@@ -345,7 +343,7 @@ $
 
 = Generalized Unions and Intersections
 
-#definition("Union of a collection of sets")[
+#definition(title: "Union of a collection of sets")[
   The _union_ of a collection of sets is the set that contains those elements that are members of at least one set in the collection.
 ]
 
@@ -357,7 +355,7 @@ $
 
 to denote the union of the sets $A_1, A_2, ..., A_n$.
 
-#definition("Intersection of a collection of sets")[
+#definition(title: "Intersection of a collection of sets")[
   The _intersection_ of a collection of sets is the set that contains those elements that are members of all sets in the collection.
 ]
 
@@ -388,7 +386,7 @@ to denote the intersection of the sets $A_1, A_2, ..., A_n$.
 
 = Functions
 
-#definition("Function")[
+#definition(title: "Function")[
 Let $A$ and $B$ be nonempty sets. A _function_ $f$ from $A$ to $B$ is an assignment of exactly one element of $B$ to each element of $A$. We write $f(a) = b$ if $b$ is the unique element of $B$ assigned by the function $f$ to the element of $a$ of $A$. If $f$ is a function from $A$ to $B$, we write $f: A -> B$.
 ]
 
@@ -407,7 +405,7 @@ Let $A$ and $B$ be nonempty sets. A _function_ $f$ from $A$ to $B$ is an assignm
 
 == Domains and Codomains
 
-#definition("Domains")[
+#definition(title: "Domains")[
   If $f$ is a function from $A$ to $B$, we say that $A$ is the _domain_ of $f$ and $B$ is the _codomain_ of $f$.
   If $f(a) = b$, we say that $b$ is the _image_ of $a$ and $a$ is a _preimage_ of $b$. The _range_, or _image_, of $f$ is the set of all images of elements of $A$. Also, if $f$ is a function from $A$ to $B$, we say that $f$ _maps_ $A$ to $B$
 ]
@@ -447,7 +445,7 @@ Let $A$ and $B$ be nonempty sets. A _function_ $f$ from $A$ to $B$ is an assignm
   Two real-valued functions or two integer-valued functions with the same domain can be added, as well as multiplied.
 ]
 
-#definition("Addition and Multiplication of functions with the same codomain")[
+#definition(title: "Addition and Multiplication of functions with the same codomain")[
   Let $f_1$ and $f_2$ be function from $A -> RR$. Then $f_1 + f_2$ and $f_1 f_2$ are also functions from $A$ to $RR$ defined for all $x in A$
 
   $
@@ -479,7 +477,7 @@ Let $A$ and $B$ be nonempty sets. A _function_ $f$ from $A$ to $B$ is an assignm
 
 == Image of a Set
 
-#definition("Image of a Set")[
+#definition(title: "Image of a Set")[
   Let $f$ be a function from $A$ to $B$ and let $S$ be a subset of $A$. The _image_ of $S$ under the function $f$ is the subset of $B$ that consists of hte images of the elements of $S$. We denote the image of $S$ by $f(S)$
 
  $
@@ -509,7 +507,7 @@ Let $A$ and $B$ be nonempty sets. A _function_ $f$ from $A$ to $B$ is an assignm
 
 === One-to-One (Injective)
 
-#definition("Injection")[
+#definition(title: "Injection")[
   A function $f$ is said to be _injective_, if and only if $f(a) = f(b)$ implies that $a = b$ for all $a$ and $b$ in the domain of $f$. A function is said to be _injective_ if it is one-to-one
 ]
 
@@ -567,7 +565,7 @@ Let $A$ and $B$ be nonempty sets. A _function_ $f$ from $A$ to $B$ is an assignm
 
 === Increasing and Decreasing Functions
 
-#definition("Increasing Function")[
+#definition(title: "Increasing Function")[
   A function $f$ whose domain and codomain are subsets of the set of real numbers is called _increasing_ if $f(x) <= f(y)$, and _strictly_ increasing if $f(x) < f(y)$, whnever $x < y$ and $x$ and $y$ are in the domain of $f$.
   Similarly, $f$ is called _decreasing_ if $f(x) >= f(y)$, and _strictly_ decreasing if $f(x) > f(y)$, whenever $x < y$ and $x$ and $y$ are in the domain of $f$.
  (Where "strictly" defines a strict inequality)
@@ -583,7 +581,7 @@ Let $A$ and $B$ be nonempty sets. A _function_ $f$ from $A$ to $B$ is an assignm
 
 === Onto (Surjective)
 
-#definition("Surjective")[
+#definition(title: "Surjective")[
   A function $f$ from $A$ to $B$ is called _onto_, or a surjection, if and only if for every element $b in B$ there is an element $a in A$ with $f(a) = b$.
   A function $f$ is called _surjective_ if it is onto.
 
@@ -646,7 +644,7 @@ $A = {a, b, c, d}$, $B = {1, 2, 3}$
 
 === Bijection
 
-#definition("Bijection")[
+#definition(title: "Bijection")[
   A function $f$ from $A$ to $B$ is called _bijective_, or a bijection, if and only if it is both injective and surjective.
 ]
 
@@ -702,7 +700,7 @@ $A = {a, b, c, d}$, $B = {1, 2, 3}$
 
 === Inverse Functions
 
-#definition("Inverse Function")[
+#definition(title: "Inverse Function")[
   Let $f$ be a one-to-one correspondence from the set $A$ to the set $B$. the _inverse function_ of $f$ is the function that assigns to an element $b$ belonging to $B$ the unique element $a$ in $A$ such that $f(a) = b$. The inverse function of $f$ is denoted by $f^(-1)$. Hence $f^(-1)(b) = a$ when $f(a) = b$
 ]
 
@@ -714,7 +712,7 @@ We can then show that $f^(-1)$ is a function from $B$ to $A$ such that $f^(-1)(1
 
 === Function Composition
 
-#definition("Composition")[
+#definition(title: "Composition")[
   Let $g$ be a function from the set $A$ to the set $B$ and let $f$ be a function from the set $B$ to the set $C$.
   The _composition_ of the function $f$ and $g$. denoted for all $a in A$ by $f compose g$, is the function from $A$ to $C$ defined by
 
