@@ -1,6 +1,9 @@
 #import "@local/dtu-template:0.6.0":*
 #import "@preview/unify:0.7.1"
+#import "@preview/cetz:0.4.2"
+#import "@preview/plotsy-3d:0.2.1": plot-3d-surface, plot-3d-vector-field
 #import "@preview/physica:0.9.8": *
+#import "@preview/cetz-plot:0.1.3"
 
 #show: dtu-note.with(
   course: "01002",
@@ -14,14 +17,14 @@
 #set math.mat(delim: "[")
 #set math.vec(delim: "[")
 
-= Funktioner 1
+= Funktioner 1 <sec:functions>
 #note-box[
 1. Vektorfunktioner af flere variable
 2. Kontinuitet
 
 ]
 
-== Repetition
+== Repetition <sec:repetition>
 
 $
 f(x) = x^2 - 4
@@ -32,8 +35,7 @@ Er injetiv i domænet fra $[-10,0[$
 
 En graf må ikke have et input som giver to outputs.
 
-== Koncepter
-
+== Koncepter <sec:concepts>
 
 #definition(title: "3")[
   Fumktioner af typen $f : A -> RR^k$
@@ -126,7 +128,7 @@ En graf må ikke have et input som giver to outputs.
 
     Så funktionerne $f_1, f_2, dots, f_k$ kaldes for koordinat funktioner.
 
-  ]
+  ] <def:vector-function>
 
   Er den injektiv? - Nej
 
@@ -322,7 +324,7 @@ $
 
 
 
-= Kontinuitet
+= Kontinuitet <sec:continuity>
 
 
 #definition(title: "3.2.1")[
@@ -459,7 +461,7 @@ Hvis $y = a x^2, a in RR$
 ]
 
 
-= Exercises
+= Exercises <sec:exercises>
 === 1: Funktion eller ej?
 
 Betragt følger korrespondance mellem $a$ og $b$ værdier:
@@ -555,28 +557,176 @@ Betragt en funktion $f: RR -> RR$ hvorom der gælder $lim_(x -> 2) f(x) = 5$ og 
 Betragt ReLU-funktionen, $"ReLU": RR^n -> RR^n$. Forklar hvorfor funktionen ikke er lineær.
 
 #solution[
-
+  Funktionen er ikke linær da det er en piecewise funktion der ikke er differentiabel i punktet $x = 0$. For at en funktion skal være lineær skal den opfylde to betingelser:
+  1. Additivitet: $f(x + y) = f(x) + f(y)$ for alle $x, y in RR^n$.
+  2. Homogenitet: $f(c x) = c f(x)$ for alle $x in RR^n$ og skalarer $c in RR$.
+  
+  ReLU opfylder ikke additivitet, for eksempel:
+  $
+    "ReLU"(1 + (-1)) = "ReLU"(0) = 0 \
+    "ReLU"(1) + "ReLU"(-1) = 1 + 0 = 1 \
+    0 != 1
+  $
+  
+  Derfor er ReLU ikke en lineær funktion.
 ]
+#math-problem(number: "5")[
+  *Mulige visualiseringer*
 
-=== 5: Mulige visualiseringer
+  Diskuter om man kan visualisere nedenstående funktioner -- i givet fald plot dem med SymPy/dtumathtools:
 
-Diskuter om man kan visualisere nedenstående funktioner -- i givet fald plot dem med SymPy/dtumathtools:
+  + En skalarfunktion af to variable $f: RR^2 -> RR, quad f(x_1, x_2) = sqrt(abs(x_1 x_2))$
+  + En skalarfunktion af fire variable $f: RR^4 -> RR, quad f(x_1, x_2, x_3, x_4) = sqrt(abs(x_1 x_2 x_3 x_4))$
+  + En kompleks skalarfunktion af to variable $f: RR^2 -> CC, quad f(x_1, x_2) = sqrt(abs(x_1 x_2)) + i cos(x_1 + x_2)$
+  + Et vektorfelt i 2D $bold(f): RR^2 -> RR^2, quad bold(f)(x_1, x_2) = (-x_2 / 3, x_1 / 3)$
+  + Et vektorfelt i 3D $bold(f): RR^3 -> RR^3, quad bold(f)(x, y, z) = (x^3 + y z^2, y^3 - x z^2, z^3)$
+  + En funktion af formen $bold(r): [0, 10] -> RR^3, quad bold(r)(t) = (cos(t), sin(t), t)$
 
-+ En skalarfunktion af to variable $f: RR^2 -> RR, quad f(x_1, x_2) = sqrt(abs(x_1 x_2))$
-+ En skalarfunktion af fire variable $f: RR^4 -> RR, quad f(x_1, x_2, x_3, x_4) = sqrt(abs(x_1 x_2 x_3 x_4))$
-+ En kompleks skalarfunktion af to variable $f: RR^2 -> CC, quad f(x_1, x_2) = sqrt(abs(x_1 x_2)) + i cos(x_1 + x_2)$
-+ Et vektorfelt i 2D $bold(f): RR^2 -> RR^2, quad bold(f)(x_1, x_2) = (-x_2 / 3, x_1 / 3)$
-+ Et vektorfelt i 3D $bold(f): RR^3 -> RR^3, quad bold(f)(x, y, z) = (x^3 + y z^2, y^3 - x z^2, z^3)$
-+ En funktion af formen $bold(r): [0, 10] -> RR^3, quad bold(r)(t) = (cos(t), sin(t), t)$
-
-#note-box(title: "Python kommandoer")[
-  Følgende kan være nyttige: `dtuplot.plot3d`, `dtuplot.plot_vector`, `dtuplot.plot3d_parametric_line`.
+  #note-box(title: "Python kommandoer")[
+    Følgende kan være nyttige: `dtuplot.plot3d`, `dtuplot.plot_vector`, `dtuplot.plot3d_parametric_line`.
+  ]
 ]
 
 #solution[
+  For at kunne visualisere en funktion $f: RR^n -> RR^k$ kræves det at $n + k <= 3$ (vi kan kun se 3 dimensioner).
 
+  + *$f: RR^2 -> RR$* -- Ja, kan visualiseres! ($2 + 1 = 3$ dimensioner). Grafen er en flade i 3D.
+  
+  + *$f: RR^4 -> RR$* -- Nej, kan ikke visualiseres direkte ($4 + 1 = 5$ dimensioner).
+  
+  + *$f: RR^2 -> CC$* -- Nej, ikke direkte ($2 + 2 = 4$ dimensioner). Man kan dog visualisere realdelen og imaginærdelen separat som to 3D-flader.
+  
+  + *$bold(f): RR^2 -> RR^2$* -- Ja! Vektorfeltet kan vises i 2D-planet med pile.
+  
+  + *$bold(f): RR^3 -> RR^3$* -- Ja! Vektorfeltet kan vises i 3D med pile i rummet.
+  
+  + *$bold(r): [0,10] -> RR^3$* -- Ja! En parametrisk kurve (helix) i 3D-rummet.
+
+  === (a) Skalarfunktion $f(x_1, x_2) = sqrt(abs(x_1 x_2))$
+
+  #align(center)[
+    #let surface-func(x, y) = calc.sqrt(calc.abs(x * y))
+    #let color-func(x, y, z, x-lo, x-hi, y-lo, y-hi, z-lo, z-hi) = {
+      let t = if z-hi == z-lo { 0.5 } else { (z - z-lo) / (z-hi - z-lo) }
+      return blue.lighten((1 - t) * 60%).transparentize(30%)
+    }
+    #plot-3d-surface(
+      surface-func,
+      color-func: color-func,
+      subdivisions: 10,
+      xdomain: (-2, 2),
+      ydomain: (-2, 2),
+      scale-dim: (0.08, 0.08, 0.04),
+      axis-step: (1, 1, 1),
+    )
+  ]
+
+  === (d) 2D Vektorfelt $bold(f)(x_1, x_2) = (-x_2/3, x_1/3)$
+
+  Dette er et rotationsfelt (mod uret):
+
+  #figure(
+    cetz.canvas({
+      import cetz.draw: *
+
+      let scale = 0.8
+      let arrow-scale = 0.25
+
+      // Axes
+      set-style(mark: (fill: black))
+      line((-3.5 * scale, 0), (3.5 * scale, 0), mark: (end: ">"), stroke: 0.8pt)
+      line((0, -3.5 * scale), (0, 3.5 * scale), mark: (end: ">"), stroke: 0.8pt)
+      content((3.5 * scale + 0.2, 0), $x_1$, anchor: "west")
+      content((0, 3.5 * scale + 0.2), $x_2$, anchor: "south")
+
+      // Vector field: f(x1, x2) = (-x2/3, x1/3)
+      for i in range(-2, 3) {
+        for j in range(-2, 3) {
+          if i == 0 and j == 0 { continue }
+          let x = i * scale
+          let y = j * scale
+          let vx = -j * arrow-scale * scale
+          let vy = i * arrow-scale * scale
+          line(
+            (x, y),
+            (x + vx, y + vy),
+            stroke: blue + 1pt,
+            mark: (end: ">", fill: blue, scale: 0.4),
+          )
+        }
+      }
+
+      circle((0, 0), radius: 0.06, fill: red)
+    }),
+    caption: [Rotational vector field $bold(f)(x_1, x_2) = (-x_2 slash 3, x_1 slash 3)$ showing counterclockwise rotation]
+  ) <fig:rotation-field>
+
+  Vektorerne peger vinkelret på radiusvektoren og danner et rotationsmønster mod uret.
+
+  === (e) 3D Vektorfelt $bold(f)(x, y, z) = (x^3 + y z^2, y^3 - x z^2, z^3)$
+
+  #align(center)[
+    #let i-func(x, y, z) = calc.pow(x, 3) + y * calc.pow(z, 2)
+    #let j-func(x, y, z) = calc.pow(y, 3) - x * calc.pow(z, 2)
+    #let k-func(x, y, z) = calc.pow(z, 3)
+    #let color-func(x, y, z, x-lo, x-hi, y-lo, y-hi, z-lo, z-hi) = {
+      let t = if z-hi == z-lo { 0.5 } else { (z - z-lo) / (z-hi - z-lo) }
+      return purple.darken(t * 50%)
+    }
+    #plot-3d-vector-field(
+      i-func,
+      j-func,
+      k-func,
+      color-func: color-func,
+      subdivisions: 2,
+      subdivision-mode: "decrease",
+      scale-dim: (0.03, 0.03, 0.03),
+      xdomain: (-2, 2),
+      ydomain: (-2, 2),
+      zdomain: (-2, 2),
+      rotation-matrix: ((-1.5, 1.2, 4), (0, -1, 0)),
+      vector-size: 0.08em,
+      vector-length-scale: 0.3,
+    )
+  ]
+
+  === (f) Helix-kurve $bold(r)(t) = (cos(t), sin(t), t)$
+
+  Projektionen på $x$-$y$ planet er en cirkel. Den fulde kurve er en helix (skruelinje):
+
+  #figure(
+    cetz.canvas({
+      import cetz.draw: *
+      import cetz-plot: *
+
+      plot.plot(
+        size: (4, 4),
+        axis-style: "school-book",
+        x-label: $x$,
+        y-label: $y$,
+        x-min: -1.5,
+        x-max: 1.5,
+        y-min: -1.5,
+        y-max: 1.5,
+        x-tick-step: 1,
+        y-tick-step: 1,
+        {
+          plot.add(
+            domain: (0, 4 * calc.pi),
+            samples: 200,
+            t => (calc.cos(t), calc.sin(t)),
+            style: (stroke: blue + 1.5pt),
+          )
+        },
+      )
+    }),
+    caption: [Projection of helix curve $bold(r)(t) = (cos(t), sin(t), t)$ onto the $x$-$y$ plane]
+  ) <fig:helix-projection>
+
+  #note-box[
+    Projektionen viser en cirkel, men i 3D stiger kurven opad langs $z$-aksen mens den roterer. For fuld 3D-visualisering kan Python med `dtuplot.plot3d_parametric_line` bruges.
+  ]
 ]
-
 === 6: Evaluering af et Neuralt Netværk
 
 Betragt et simpelt "shallow" neuralt netværk $bold(Phi): RR^2 -> RR$ med ét skjult lag ($L = 2$). Netværket er defineret ved parametrene:
@@ -597,6 +747,15 @@ Beregn værdien af netværket i punktet $bold(x) = vec(0.5, 1)$.
 
 #solution[
 
+$
+Phi(vec(0.5,1)) &=  mat(-1,2) "ReLU"(mat(2,0;-1,1) vec(0.5,1) + vec(-1,0)) + 0 \
+&= mat(-1,2) "ReLU"(vec(1,0.5) + vec(-1, 0) ) + 0 \
+&= mat(-1,2) "ReLu"(vec(0,0.5)) + 0 \ 
+&= mat(-1,2) vec(0,0.5) + 0 \
+&= mat(-1,2) vec(0,0.5) \
+&= 1
+$
+
 ]
 
 ==== Spørgsmål b
@@ -604,7 +763,32 @@ Beregn værdien af netværket i punktet $bold(x) = vec(0.5, 1)$.
 Find et punkt $bold(x)$, hvor netværkets output $bold(Phi)(bold(x))$ er negativt. Begrund dit svar.
 
 #solution[
+  lad os vælge $x = mat(2,2)^T$:
+  
+  $
+    A_1 bold(x) + bold(b)_1 &= mat(2, 0;-1, 1) vec(2, 2) + vec(-1, 0) \
+    &= vec(2 dot 2 + 0 dot 2, -1 dot 2 + 1 dot 2) + vec(-1, 0) \
+    &= vec(4, 0) + vec(-1, 0) \
+    &= vec(3, 0)
+  $
+  
+  så kan vi anvende ReLU:
+  $
+    "ReLU"(vec(3, 0)) = vec(max(0, 3), max(0, 0)) = vec(3, 0)
+  $
+  
+  Nu kan vi beregne outputlaget:
+  $
+    bold(Phi)(bold(x)) &= A_2 vec(3, 0) + b_2 \
+    &= mat(-1, 2) vec(3, 0) + 0 \
+    &= vec(-1 dot 3 + 2 dot 0) + 0 \
+    &= vec(-3)
+  $
 
+
+ #note-box[
+   Work my way backwards
+ ]
 ]
 
 ==== Spørgsmål c
@@ -612,6 +796,10 @@ Find et punkt $bold(x)$, hvor netværkets output $bold(Phi)(bold(x))$ er negativ
 Hvor mange justerbare parametre (vægte og bias-værdier) har dette netværk totalt?
 
 #solution[
+  Lag 1: Matrix $A_1$ er $2 times 2$ (4 parametre), bias $b_1$ er $2 times 1$ (2 parametre). I alt $4 + 2 = 6$.
+  Lag 2: Matrix $A_2$ er $1 times 2$ (2 parametre), bias $b_2$ er $1 times 1$ (1 parameter). I alt $2 + 1 = 3$.
+
+  Den totale antale parametre er $6 + 3 = 9$.
 
 ]
 
@@ -637,6 +825,11 @@ Angiv den delmængde af definitionsmængden, hvor netværksfunktionen $bold(Phi)
 
 #solution[
 
+  #note-box[
+    Unsure about this one rn 
+  ]
+
+
 ]
 
 === 7: Visualisering af Netværket
@@ -652,7 +845,10 @@ Du skal plotte grafen for netværket over området $x_1, x_2 in [-2, 2]$.
 Kan du plotte grafen af det samme neurale netværk hvor $bold(sigma)_("step")$ bruges i stedet for ReLU? Planerne i den nye graf bør ikke "hænge sammen" (hvorfor?).
 
 #solution[
-
+  #figure(
+    image("neural_network_plot.png"),
+    caption: [ReLU med normal aktiveringsfunktion]
+  )
 ]
 
 === 8: Lineær vektorfunktion

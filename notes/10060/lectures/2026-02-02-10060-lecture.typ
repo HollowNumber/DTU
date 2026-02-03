@@ -249,22 +249,27 @@ each other with 88 km/h and the drivers brakes when they are 85 m apart
             x-max: 4,
             y-min: 0,
             y-max: 90,
-            legend: "north-west",
             {
-              plot.add(car1, domain: (0, 4), samples: 100, style: (stroke: blue + 1.5pt), label: [Car 1])
-
-              plot.add(car2, domain: (0, 4), samples: 100, style: (stroke: red + 1.5pt), label: [Car 2])
-
-              // Mark the stopping point
-              plot.add-vline(t_stop, style: (stroke: (dash: "dashed", paint: gray)))
-
-              // Add annotation for final separation
-              plot.annotate(
-                {
-                  line((t_stop, car1(t_stop)), (t_stop, car2(t_stop)), stroke: green + 1pt, mark: (start: ">", end: ">"))
-                  content(((t_stop, car1(t_stop)), 50%, (t_stop, car2(t_stop))), [#text(green)[10.3 m]], anchor: "west", padding: -0.3)
-                },
+              plot.add(
+                domain: (0, 4),
+                samples: 100,
+                car1,
+                style: (stroke: blue + 1.5pt),
+                label: [Car 1],
               )
+              plot.add(
+                domain: (0, 4),
+                samples: 100,
+                car2,
+                style: (stroke: red + 1.5pt),
+                label: [Car 2],
+              )
+            },
+          )
+        },
+      ),
+      caption: [Position vs. time for two cars braking: Car 1 (blue) starting at 0m and Car 2 (red) starting at 85m, both decelerating at 8 m/s² from initial velocity 24.44 m/s]
+    ) <fig:cars-braking>
             },
           )
         },
