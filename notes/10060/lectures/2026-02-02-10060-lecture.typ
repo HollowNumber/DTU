@@ -387,12 +387,12 @@ When the car reaches the pedestrian
 The graph below shows the velocity of a particle in a time interval from $t=0$ s to $t=8$ s.
 
 Which of the following statements are true?
-- The position of the particle is greater at 𝑡𝑡 = 8 s compared to 𝑡𝑡 = 0 𝑠𝑠
+- The position of the particle is greater at t = 8 s compared to t = 0 s
 - The particle does not at any point move with a speed greater than 5 m/s
-- From 𝑡𝑡 = 0 s to 𝑡𝑡 = 4 s the particle has moved 20 m
+- From t = 0 s to t = 4 s the particle has moved 20 m
 - At a given time interval, the particle moves 5 m in negative direction.
 - During the motion, the particle has an acceleration of +5 m/s 2 and -5 m/s 2
-- Between 𝑡𝑡 = 4 s and 𝑡𝑡 = 5 s the particle is at rest.
+- Between t = 4 s and t = 5 s the particle is at rest.
 - Don’t know
 ]
 
