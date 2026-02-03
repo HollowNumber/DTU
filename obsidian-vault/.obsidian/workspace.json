@@ -11,14 +11,10 @@
             "id": "6d3cdfe1fcc691fd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "courses/01017-Discrete Mathematics.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "01017-Discrete Mathematics"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -160,13 +156,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "courses/01017-Discrete Mathematics.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 01017-Discrete Mathematics"
+              "title": "Outline"
             }
           }
         ],
@@ -189,14 +184,37 @@
   },
   "active": "6d3cdfe1fcc691fd",
   "lastOpenFiles": [
-    "2025-08-29-01017-lecture.pdf.md",
-    "courses/01017-Discrete Mathematics.md",
+    "concept-maps/Conjunction og Disjunction.md",
+    "concept-maps/Ækvivalensrelationer.md",
+    "concept-maps/Delelighed (Divisibility).md",
+    "concept-maps/Diagonalisering.md",
+    "concept-maps/Differentialregning.md",
+    "concept-maps/Domæne og Billedrum.md",
+    "concept-maps/Egenværdier og Egenvektorer.md",
+    "concept-maps/Epsilon-Delta Definition.md",
+    "concept-maps/Eulers Formel.md",
+    "concept-maps/Funktioner.md",
+    "concept-maps/Hastighed og Acceleration.md",
+    "concept-maps/Heaviside-funktionen.md",
+    "concept-maps/Implikation og Biimplikation.md",
+    "concept-maps/Injektivitet og Surjektivitet.md",
+    "concept-maps/Kinematik 1D.md",
+    "concept-maps/Komplekse Egenværdier.md",
+    "concept-maps/Komplekse Tal.md",
+    "concept-maps/Kontinuitet.md",
+    "concept-maps/Kontrapositive og Converse.md",
+    "concept-maps/Koordinatfunktioner.md",
+    "concept-maps/Lineær Algebra.md",
+    "concept-maps/Lineære ODE'er.md",
+    "concept-maps/Logisk Ækvivalens.md",
+    "concept-maps/Logiske Operatorer.md",
+    "concept-maps/Negation.md",
+    "concept-maps/Neurale Netværk.md",
     "notes/01017/lectures/pdf/2025-09-04-01017-lecture.pdf",
     "notes/01017/lectures/pdf/2025-08-29-01017-lecture.pdf",
     "courses/2025-08-29-01017-lecture.pdf",
     "notes/01017/lectures/pdf",
     "notes/02103/lectures/2025-08-26-02103-lecture.pdf",
-    "().md",
     "notes/02103/lectures/2025-08-26-02103-lecture.typ",
     "notes/02102/lectures/2025-08-26-02102-lecture.typ",
     "notes/02101/lectures/2025-08-26-02101-lecture.typ",

@@ -1,4 +1,4 @@
-#import "@local/dtu-template:0.5.1":*
+#import "@local/dtu-template:0.6.0":*
 #import "@preview/physica:0.9.8": *
 #show: dtu-note.with(
   course: "10060",
