@@ -375,7 +375,9 @@ $
 
   $
     sin(beta) &= ("modstående katete")/"hypotenusen" \
-    &= abs(arrow(v)_(L | J))/abs(arrow(v)_"F|L")
+    &= abs(arrow(v)_(L | J))/abs(arrow(v)_"F|L") \
+    
+    beta &= sin^(-1)((100 "km"/"h" )/(240 "km"/"h")) = 24.6^degree
   $
   
   hvor:
