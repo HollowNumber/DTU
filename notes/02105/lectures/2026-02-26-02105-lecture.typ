@@ -9,26 +9,7 @@
   semester: "2026 Spring"
 )
 
-= Key Concepts
-
-
-
-= Examples
-
-
-
-= Important Points
-
-
-
-= Questions & Follow-up
-
-
-
-== next week
-
-
-= Prep
+= Exercises
 
 == 1 Asymptotic Growth
 
@@ -62,18 +43,59 @@ $
  
   1. 
 
-  At a glance the cube of $n$ will grow a lot faster than the square of $n$ regardless of it being divided by two. 
-
-  $
-  n^2 + n^3/2 &= lim_(n-> infinity) n^2/(n^3 slash 2) \ 
-  &= lim_(n->infinity) (n dot n )/( (n dot n^2 )/2) \
-  &= lim_(n->infinity) (2(n dot n))/(2 (n dot n^2) ) \ 
-  &= lim_(n->oo) (cancel(2) cancel(n) n)/(cancel(2 n) n^2 ) \
-  &= lim_(n->oo) n/n^2
-  $
-
+  No matter what $n^3/2$ will grow a lot faster than $n^2$ therefore it is $Theta(n^3)$.
+  
   2. 
 
+  The average case time complexity of $2^n + n^4$ will be $Theta(2^n)$
+
+  3. 
+
+  Trivially $log_2 n$ will always be faster. But average case it would be $Theta(n sqrt(n))$
+
+
+  4. 
+
+  We can expand the expression:
+
+  $
+  n(n-6) &= n^2 -6n \
+  $
+
+  Thus we get an average case of $Theta(n^2)$
+
+
+  5.
+
+  The average case of $4 sqrt(n)$ would be $Theta(sqrt(n))$
+
+
+  6. 
+
+  $
+  8 (log_2 n)^7 + 35 log_2 n + 1/1000 n 
+  $
+
+  I can only imagine that its gonna be an avereage of $Theta(log_2^7 n) $
+
+  7. 
+
+  Average case of $Theta(log_2^3 n )$
+
+
+  8. 
+
+  Avereage case would be $Theta(n^3)$
+
+
+  9.
+
+  Average case of $Theta(n^3)$
+
+
+  10.
+
+  Average case of $Theta(n^3)$
 
 ]
 
@@ -152,3 +174,11 @@ n^3 (n-1) slash 5 = Theta(n^3) quad n^(1/4) + n^2 = Theta(n) \
 log_2^2 n + n = Theta(n) quad 2^(log_4 n) = Theta(sqrt(n))
 $
 
+
+= Lecture
+
+
+/ Abstract Data Structure: are data structures that are defined by their behavior and operations, rather than their implementation. Examples of abstract data structures include stacks, queues, and trees.
+/ Concrete Data Structure: are data structures that are defined by their implementation and the way they store data. Examples of concrete data structures include arrays, linked lists, and hash tables.
+/ Static Data Structure: are data structures that have a fixed size, and cannot be modified after they have been created. Examples of static data structures include arrays and linked lists.
+/ Dynamic Data Structure: are data structures that can grow and shrink in size as needed. Examples of dynamic data structures include stacks, queues, and hash tables.
