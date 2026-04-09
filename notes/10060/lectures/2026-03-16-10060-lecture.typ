@@ -10,3 +10,15 @@
   semester: "2026 Spring"
 )
 
+#let dd = dd.with(d: math.Delta)
+
+
+
+$
+dv(x,t,2)
+$
+$
+dd(t)
+$
+
+
